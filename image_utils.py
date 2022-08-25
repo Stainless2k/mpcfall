@@ -16,7 +16,7 @@ def add_bleed(img_path: pathlib.Path):
     im_recon_sc = (255 * ((im - minval) / (maxval - minval))).astype(np.uint8)
 
     # Borderify image
-    pad = 36  # Pad image by 1/8th of inch on each edge
+    pad = 36 * 2  # Pad image by 1/8th of inch on each edge
     bordertol = 16  # Overfill onto existing border by 16px to remove white corners
     im_padded = np.zeros([im.shape[0] + 2 * pad, im.shape[1] + 2 * pad, 4])
 
