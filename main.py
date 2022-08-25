@@ -24,7 +24,9 @@ if __name__ == '__main__':
         download_image(x)
 
     for x in IMAGE_FOLDER.glob('*.png'):
-        waifu2x.run(input_img_path=str(x), output_img_path=str(x.parent / 'scaled' / x.name))
+        output = x.parent / 'scaled' / x.name
+        if not output.is_file():
+            waifu2x.run(input_img_path=str(x), output_img_path=str(x.parent / 'scaled' / x.name))
 
     for x in (IMAGE_FOLDER / 'scaled').glob('*.png'):
         image_utils.add_bleed(x)
