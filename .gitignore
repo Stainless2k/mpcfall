@@ -1,2 +1,4 @@
 /cards/
 /cards_to_be.xml
+
+__pycache__/

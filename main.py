@@ -3,6 +3,8 @@ import pathlib
 import requests as requests
 import scrython
 
+import image_utils
+
 XML_FILE = 'cards_to_be.xml'
 IMAGE_FOLDER: pathlib.Path = pathlib.Path('cards')
 XML_END_STRING = f'''    </fronts>
@@ -36,9 +38,9 @@ def generate_start_xml(quantity: int):
 
 
 def download_image(card_name: str):
-    card_url = scrython.cards.Named(exact=card_name).image_uris().get('border_crop')
+    card_url = scrython.cards.Named(exact=card_name).image_uris().get('png')
     img_data = requests.get(card_url).content
-    with open(IMAGE_FOLDER / f'{card_name}.jpg', 'wb') as handler:
+    with open(IMAGE_FOLDER / f'{card_name}.png', 'wb') as handler:
         handler.write(img_data)
 
 
@@ -66,5 +68,8 @@ if __name__ == '__main__':
     for index, x in enumerate(name):
         download_image(x)
         add_card_to_xml(x, index)
+
+    for x in IMAGE_FOLDER.glob('*.png'):
+        image_utils.add_bleed(x)
 
     finish_xml()
