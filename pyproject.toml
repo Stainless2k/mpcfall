@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "mpcfall"
+version = "0.1.0"
+description = "Skript to download and scale cards from scryfall for mpc orders"
+authors = ["Leon Guenther <leonsechteemailadresse@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.10.7"
+requests = "2.28.1"
+imageio = "2.22.0"
+scrython = "1.11.0"
+waifu2x = "2022.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
