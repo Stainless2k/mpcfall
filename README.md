@@ -1,8 +1,9 @@
 # mpcfall
+
+install pypoetry: https://python-poetry.org/docs/#installation
+
 ```
-pip install git+https://github.com/FHPythonUtils/Waifu2x`
-pip install scrython
-pip install imageio
-pip install requests
+poetry install
 ```
+
 put cards.txt in folder -> run
