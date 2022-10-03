@@ -30,11 +30,12 @@ def download_image(card_name: str, set_code: Optional[str]):
 
 
 def scale_images(image_path: pathlib.Path):
-    output_path = image_path.parent / 'scaled' / image_path.name
-    if not output_path.is_file():
+    output_path = image_path.parent / 'scaled'
+    output_img = output_path / image_path.name
+    if not output_img.is_file():
         print('SCALING: ', image_path)
         # waifu2x.run(input_img_path=str(image_path), output_img_path=str(output_path))
-        inference_realesrgan.run(input_path=str(image_path), output_path=str(output_path), outscale=2)
+        inference_realesrgan.run(input_path=str(image_path), output_path=str(output_path), outscale=2, suffix='')
     else:
         print('SKIP SCALING: ', image_path)
 
