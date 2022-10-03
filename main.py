@@ -1,13 +1,12 @@
 import multiprocessing
 import pathlib
-from multiprocessing import Pool
 from typing import Optional
 
 import requests
 import scrython
-import waifu2x
 
 import image_utils
+import inference_realesrgan
 
 IMAGE_FOLDER: pathlib.Path = pathlib.Path('cards')
 CARDS_TXT: pathlib.Path = pathlib.Path('cards.txt')
@@ -34,7 +33,8 @@ def scale_images(image_path: pathlib.Path):
     output_path = image_path.parent / 'scaled' / image_path.name
     if not output_path.is_file():
         print('SCALING: ', image_path)
-        waifu2x.run(input_img_path=str(image_path), output_img_path=str(output_path))
+        # waifu2x.run(input_img_path=str(image_path), output_img_path=str(output_path))
+        inference_realesrgan.run(input_path=str(image_path), output_path=str(output_path), outscale=2)
     else:
         print('SKIP SCALING: ', image_path)
 
@@ -56,10 +56,9 @@ if __name__ == '__main__':
         print('DOWNLOADING: ', f"{name} {code}")
         download_image(card_name=name, set_code=code)
 
-    print(f'Staring scaling with {CPUS_TO_USE} cores')
     downloaded_images = IMAGE_FOLDER.glob('*.png')
-    with Pool(CPUS_TO_USE) as p:
-        p.map(scale_images, downloaded_images)
+    for img in downloaded_images:
+        scale_images(img)
 
     for x in (IMAGE_FOLDER / 'scaled').glob('*.png'):
         print('Bleeding: ', x)
