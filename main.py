@@ -14,19 +14,24 @@ CPUS_TO_USE = multiprocessing.cpu_count() - 1
 
 
 def download_image(card_name: str, set_code: Optional[str]):
-    if set_code is not None:
-        try:
-            card_url = scrython.cards.Named(exact=card_name, set=set_code).image_uris().get('png')
-        except scrython.foundation.ScryfallError:
-            card_url = scrython.cards.Named(exact=card_name).image_uris().get('png')
-            set_code = 'NOT_FOUND_' + set_code
+    img_path = IMAGE_FOLDER / f'{card_name}_{set_code}.png'
+    if img_path.is_file():
+        print('SKIP DOWNLOAD: ' + str(img_path))
     else:
-        card_url = scrython.cards.Named(exact=card_name).image_uris().get('png')
-        set_code = ''
+        print('DOWNLOADING: ', f"{name} {code}")
+        if set_code is not None:
+            try:
+                card_url = scrython.cards.Named(exact=card_name, set=set_code).image_uris().get('png')
+            except scrython.foundation.ScryfallError:
+                card_url = scrython.cards.Named(exact=card_name).image_uris().get('png')
+                set_code = 'NOT_FOUND_' + set_code
+        else:
+            card_url = scrython.cards.Named(exact=card_name).image_uris().get('png')
+            set_code = ''
 
-    img_data = requests.get(card_url).content
-    with open(IMAGE_FOLDER / f'{card_name}_{set_code}.png', 'wb') as handler:
-        handler.write(img_data)
+        img_data = requests.get(card_url).content
+        with open(IMAGE_FOLDER / f'{card_name}_{set_code}.png', 'wb') as handler:
+            handler.write(img_data)
 
 
 def scale_images(image_path: pathlib.Path):
@@ -45,7 +50,7 @@ if __name__ == '__main__':
     names_and_set_codes = []
 
     with CARDS_TXT.open('r') as file:
-        lines = file.readlines()
+        lines = [line.strip() for line in file if line.strip()]
         for line in lines:
             split = line.split('|', maxsplit=1)
             if len(split) < 2:
@@ -54,7 +59,6 @@ if __name__ == '__main__':
                 names_and_set_codes.append([split[0].strip(), split[1].strip()])
 
     for name, code in names_and_set_codes:
-        print('DOWNLOADING: ', f"{name} {code}")
         download_image(card_name=name, set_code=code)
 
     downloaded_images = IMAGE_FOLDER.glob('*.png')
