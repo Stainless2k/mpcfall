@@ -11,6 +11,8 @@ requests = "2.28.1"
 imageio = "2.22.0"
 scrython = "1.11.0"
 realesrgan = "0.3.0"
+Nuitka = "^1.1.2"
+orderedset = "^2.0.3"
 
 
 [build-system]

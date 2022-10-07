@@ -445,6 +445,14 @@ extra = ["lxml (>=4.6)", "pydot (>=1.4.2)", "pygraphviz (>=1.9)", "sympy (>=1.10
 test = ["codecov (>=2.1)", "pytest (>=7.1)", "pytest-cov (>=3.0)"]
 
 [[package]]
+name = "Nuitka"
+version = "1.1.2"
+description = "Python compiler with full language support and CPython compatibility"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "numba"
 version = "0.56.2"
 description = "compiling Python code using LLVM"
@@ -494,6 +502,14 @@ numpy = [
     {version = ">=1.14.5", markers = "python_version >= \"3.7\""},
     {version = ">=1.17.3", markers = "python_version >= \"3.8\""},
 ]
+
+[[package]]
+name = "orderedset"
+version = "2.0.3"
+description = "An Ordered Set implementation in Cython."
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "packaging"
@@ -922,7 +938,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "3.8.7"
-content-hash = "3b12bc72dcb97d1700c40e471e9ea946eeb4ea5755a0c2fb042520565a49cd39"
+content-hash = "8212d4f6face5270b3ccf029ab62b1f842138b0633cea03ffcc72cb21af0bb35"
 
 [metadata.files]
 absl-py = [
@@ -1563,6 +1579,9 @@ networkx = [
     {file = "networkx-2.8.7-py3-none-any.whl", hash = "sha256:15cdf7f7c157637107ea690cabbc488018f8256fa28242aed0fb24c93c03a06d"},
     {file = "networkx-2.8.7.tar.gz", hash = "sha256:815383fd52ece0a7024b5fd8408cc13a389ea350cd912178b82eed8b96f82cd3"},
 ]
+Nuitka = [
+    {file = "Nuitka-1.1.2.tar.gz", hash = "sha256:f978fa89c6225a73d160071c2d0c542e20c45d8703ffd0577575d92703a44b93"},
+]
 numba = [
     {file = "numba-0.56.2-cp310-cp310-macosx_10_14_x86_64.whl", hash = "sha256:e50d1de5291d1afd3d660ca149447c682d70b8d3c22f97ed9a3076e6344330b0"},
     {file = "numba-0.56.2-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:0c358fd4ef7c5efc09ee96432284d66df285bd68654e85c39cf6c570dc35429a"},
@@ -1635,6 +1654,9 @@ opencv-python = [
     {file = "opencv_python-4.6.0.66-cp36-abi3-win32.whl", hash = "sha256:f482e78de6e7b0b060ff994ffd859bddc3f7f382bb2019ef157b0ea8ca8712f5"},
     {file = "opencv_python-4.6.0.66-cp36-abi3-win_amd64.whl", hash = "sha256:0dc82a3d8630c099d2f3ac1b1aabee164e8188db54a786abb7a4e27eba309440"},
     {file = "opencv_python-4.6.0.66-cp37-abi3-macosx_11_0_arm64.whl", hash = "sha256:6e32af22e3202748bd233ed8f538741876191863882eba44e332d1a34993165b"},
+]
+orderedset = [
+    {file = "orderedset-2.0.3.tar.gz", hash = "sha256:b2f5ccfb5a86e7b3b3ddf18b29779cc18b24653abf9d6da4bebecf33780a6e29"},
 ]
 packaging = [
     {file = "packaging-21.3-py3-none-any.whl", hash = "sha256:ef103e05f519cdc783ae24ea4e2e0f508a9c99b2d4969652eed6a2e1ea5bd522"},

@@ -127,3 +127,4 @@ fabric.properties
 /anime/
 
 .python-version
+/main.build/
