@@ -13,6 +13,7 @@ scrython = "1.11.0"
 realesrgan = "0.3.0"
 Nuitka = "^1.1.2"
 orderedset = "^2.0.3"
+zstandard = "^0.18.0"
 
 
 [build-system]

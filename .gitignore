@@ -128,3 +128,8 @@ fabric.properties
 
 .python-version
 /main.build/
+/main.onefile-build/
+/dist/
+/main.build/
+/main.dist/
+/build/
