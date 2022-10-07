@@ -125,3 +125,5 @@ fabric.properties
 /weights/
 /results/
 /anime/
+
+.python-version

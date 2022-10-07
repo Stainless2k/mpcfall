@@ -10,7 +10,6 @@ python = "3.8.7"
 requests = "2.28.1"
 imageio = "2.22.0"
 scrython = "1.11.0"
-waifu2x = "2022.2"
 realesrgan = "0.3.0"
 
 
