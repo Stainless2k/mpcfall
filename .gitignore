@@ -3,7 +3,7 @@
 
 __pycache__/
 
-cards.txt
+src/cards.txt
 
 # Created by https://www.toptal.com/developers/gitignore/api/pycharm
 # Edit at https://www.toptal.com/developers/gitignore?templates=pycharm
@@ -133,3 +133,4 @@ fabric.properties
 /main.build/
 /main.dist/
 /build/
+/src/cards/

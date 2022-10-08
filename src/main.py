@@ -5,8 +5,7 @@ from typing import Optional
 import requests
 import scrython
 
-import image_utils
-import inference_realesrgan
+from utils import inference_realesrgan, image_utils
 
 IMAGE_FOLDER: pathlib.Path = pathlib.Path('cards')
 CARDS_TXT: pathlib.Path = pathlib.Path('cards.txt')

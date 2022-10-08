@@ -3,7 +3,7 @@ import pathlib
 import imageio as imageio
 import numpy as np
 
-import main
+from src import main
 
 
 # proudly stolen from https://github.com/MrTeferi/mpc-scryfall/blob/master/scryfall_formatter.py
