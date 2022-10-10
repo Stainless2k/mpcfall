@@ -4,10 +4,11 @@ import os
 from typing import Literal
 
 import cv2
-from basicsr.archs.rrdbnet_arch import RRDBNet
-from basicsr.utils.download_util import load_file_from_url
 from realesrgan import RealESRGANer
 from realesrgan.archs.srvgg_arch import SRVGGNetCompact
+
+from basicsr.archs.rrdbnet_arch import RRDBNet
+from basicsr.utils.download_util import load_file_from_url
 
 
 def main():
@@ -123,13 +124,13 @@ def run(input_path: str = 'inputs',
     if args.model_path is not None:
         model_path = args.model_path
     else:
-        model_path = os.path.join('../../weights', args.model_name + '.pth')
+        model_path = os.path.join('weights', args.model_name + '.pth')
         if not os.path.isfile(model_path):
             ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
             for url in file_url:
                 # model_path will be updated
                 model_path = load_file_from_url(
-                    url=url, model_dir=os.path.join(ROOT_DIR, '../../weights'), progress=True, file_name=None)
+                    url=url, model_dir=os.path.join(ROOT_DIR, '/weights'), progress=True, file_name=None)
 
     # use dni to control the denoise strength
     dni_weight = None
